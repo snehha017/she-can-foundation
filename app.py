@@ -5,7 +5,19 @@ app.secret_key = 'your_secret_key'
 
 @app.route("/")
 def index():
-    return render_template("signup.html")
+    return render_template("signup.html", show='login')
+
+@app.route('/login', methods=['POST'])
+def login():
+    return render_template("dashboard.html")
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    return redirect(url_for('index', show='login', success='Registered Successfully!'))
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template("dashboard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
