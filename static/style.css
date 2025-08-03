@@ -10,13 +10,13 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(90deg, white, pink);
+    background: linear-gradient(90deg, white, rgb(60, 204, 170));
  }
 
 .container {
     position: relative;
-    width: 850px;
-    height: 550px;
+    width: 950px;
+    height: 680px;
     background: white;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
@@ -35,7 +35,7 @@
     text-align: center;
     padding: 40px;
     z-index: 1;
-    transition: .6s ease-in-out 1,2s, visibility 0s 1s;
+    transition: .6s ease-in-out 1.2s, visibility 0s 1s;
 }
 
 .container.active .form-box {
@@ -56,7 +56,7 @@ form {
 
 .container h1 {
     font-size: 35px;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .input-box {
@@ -68,7 +68,7 @@ form {
     width: 100%;
     padding: 13px 50px 13px 20px;
     background: #eeeded;
-    border-radius: 8px;
+    border-radius: 5px;
     border: none;
     outline: none;
     font-size: 16px;
@@ -77,7 +77,7 @@ form {
 }
 
 .input-box input::placeholder {
-    color: #867f7f;
+    color: #a29e9e;
     font-weight: 400;
 }
 
@@ -89,23 +89,45 @@ form {
     font-size: 20px;
 }
 
-.forgot-link a {
+.forgot-link {
+    position: relative;
     font-size: 14.5px;
     color: #333;
     text-decoration: none;
 }
 
+.forgot-link::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: rgb(24, 189, 151);
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.forgot-link:hover::before {
+    width: 110%;
+}
+
 .btn {
-    width: 100%;
+    width: 60%;
     height: 48px;
-    background: #7494ec;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    background: rgb(27, 211, 168);
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     border: none;
     cursor: pointer;
     font-size: 16px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 60;
+    transition: all 0.2 ease;
+}
+
+.btn:hover {
+    background: rgb(26, 191, 153);
 }
 
 .container p {
@@ -117,11 +139,20 @@ form {
     display: inline-flex;
     padding: 10px;
     border: 2px solid #ccc;
-    border-radius: 8px;
+    border-radius: 30px;
     font-size: 24px;
     color: #333;
     text-decoration: none;
     margin: 0 8px;
+    transition: all 0.2s ease-in;
+}
+
+.social-icons a:hover {
+    border: 2px solid rgb(27, 211, 168);
+    color: rgb(57, 217, 166);
+    border-radius: 20px;
+    transform: scale(1.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .toggle-box {
@@ -136,8 +167,8 @@ form {
     left: -250%;
     width: 300%;
     height: 100%;
-    border-radius: 150px;
-    background-color: #f5ba71;
+    border-radius: 200px;
+    background-color: rgb(27, 211, 168);
     z-index: 2;
     transition: 1.8s ease-in-out;
     
@@ -190,4 +221,12 @@ form {
     background: transparent;
     border: 2px solid #fff;
     box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.toggle-panel .btn:hover {
+  background-color: white;
+  color: #333;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
