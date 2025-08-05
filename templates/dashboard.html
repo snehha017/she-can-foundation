@@ -1,13 +1,11 @@
 <!DOCTYPE html> 
-<html>
+<html lang="en">
     <head>
         <title>Intern Dashboard</title>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='dashboardstyle.css') }}">
     </head>
     <body>
-        <div class="container"></div>
-
         <nav class="nav-bar">
             <div class="brand">
                 <img src="/static/images/shecan.jpg" alt="Logo" class="logo-img">
@@ -18,9 +16,61 @@
                 <li> <a href="#">ABOUT</a> </li>
                 <li> <a href="#">SERVICES</a> </li>
                 <li> <a href="#">CONTACT</a> </li>
+                <li> <a href="/login">LOGOUT</a> </li>
             </ul>
+
+            <div class="welcome">
+                <h2>Hello,<br> Welcome to She Can!</h2>
+                <p id="clock"></p>
+            </div>
         </nav>
-            <h2>Inter Dashboard</h2>
-            <p></p>
+
+        <div class="content">
+            <div class="left-section">
+                <p>Empowering women is the key to creating stronger communities and a better world. 
+                    When women are given equal opportunities, they unlock their full potential and inspire those around them. 
+                    Education, support, and inclusion pave the way for their growth and success. 
+                    By standing together, we can challenge barriers and promote gender equality in every sphere of life. 
+                    Each step toward empowerment sparks positive change that benefits everyone. 
+                    Let us join hands to inspire change and build a brighter, more inclusive future together!</p>
+                
+            </div>
+            <div class="right-section">
+                <h2>Intern Dashboard</h2>
+                <p>Name : <span id="intern-name"></span></p>
+                <p>Referral Code : <span id="referral"></span></p>
+                <p>Donations Raised : ₹<span id="donations"></span></p>
+                <br>
+                <div class="rewards">
+                    <h3>Rewards</h3>
+                    <ul>
+                        <img src="/static/images/giftbox.png" alt="Reward Icon" width="50">
+                        <img src="/static/images/trophy.png" alt="Reward Icon" width="50">
+                        <img src="/static/images/medal.png" alt="Reward Icon" width="50">
+                        <img src="/static/images/medal_1.png" alt="Reward Icon" width="50">
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script>
+            fetch('/api/intern')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('intern-name').textContent = data.name;
+                    document.getElementById('referral').textContent = data.referralCode;
+                    document.getElementById('donations').textContent = data.donations;
+                })
+
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString(); 
+                document.getElementById('clock').textContent = timeString;
+            }
+
+            updateTime();
+            setInterval(updateTime, 1000);
+        </script>
     </body>
 </html>
