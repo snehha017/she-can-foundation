@@ -7,7 +7,7 @@
 
 body {
     height: 100%;
-    background: white;
+    background: #d8dcfa;
 }
 
 .nav-bar {
@@ -99,11 +99,13 @@ body {
 }
 
 .left-section {
-    width: 49%;
+    width: 55%;
     padding: 20px;
     color: #2D3250;
     font-size: large;
     border-radius: 10px;
+    animation: fadeIn 0.9s ease-in-out;
+    font-style: italic;
 }
 
 .right-section {
@@ -111,15 +113,28 @@ body {
     height: 410px;
     align-items: center;
     color: #2D3250;
-    background-color: grey;
+    background-color: #7a83be;
     padding: 20px;
     border-radius: 10px;
     text-align: left;
     font-family: cursive;
     font-size: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.9s ease-in-out;
 }
 
 .rewards img{
    margin-left: 15px;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
